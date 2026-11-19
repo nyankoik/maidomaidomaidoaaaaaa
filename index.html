@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>タイトル</title>
+<style>
+
+table {
+  table-layout: fixed;
+  margin: 10px auto;
+  border-collapse: collapse;
+  border: 1px solid #000000;
+}
+
+th,
+td {
+  width:2rem;
+  padding: 0.6em;
+  border: 1px solid #000000;
+}
+
+td:hover {
+  background-color: #efefef;
+}
+
+
+input {
+  display: block;
+  margin: 0 auto;
+  transform: scale(1.7);
+}
+
+.left {
+  width:10rem;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<form>
+<table id="t">
+<tbody id="tb"></tbody>
+</table>
+
+<label>
+  <input type="reset" value="リセット">
+</label>
+</form>
+
+<script>
+const table = ["1番卓", "2番卓", "3番卓", "4番卓"]
+const drink = ["水", "ﾃﾞｱﾋﾞｰﾙ", "ﾊｲﾎﾞｰﾙ", "りんごｼﾞｭｰｽ"]
+const dish = ["お土産ｿｰｾｰｼﾞ", "ﾊﾘﾎﾞｰﾊﾟｴﾘｱ", "ﾏｽﾀﾍﾞﾌﾅの煮付け", "ｷﾝｼｭ貝のｵｲﾙ漬け", "ｵｻﾙﾎﾟﾃﾄの冷製ｽｰﾌﾟ", "ﾁｮｺﾉﾐﾔｷ", "ｺｹﾞﾀｶﾌﾞのﾗﾋﾞｵﾘ", "ﾊﾞﾝｼﾞｰｼﾁｭｰ"]
+
+//デバッグ用
+const a = ["あ"]
+
+//失敗
+function cell(s){
+const td = document.createElement("td");
+const text =  document.createTextNode(`${s}`);
+td.appendChild(text);
+//tr.appendChild(td);
+};
+
+
+
+
+let tr = document.createElement("tr");
+
+//空
+tr.appendChild(document.createElement("th"));
+
+//卓
+table.forEach((t_data) =>{
+const th = document.createElement("th");
+th.appendChild(document.createTextNode(`${t_data}`));
+tr.appendChild(th);
+})
+
+tb.appendChild(tr);
+
+//デバッグ用
+a.forEach((b)=>{
+const c = document.createElement("c");
+tb.appendChild(c);
+
+})
+
+//飲み物
+drink.forEach((d_data)=>{
+const tr = document.createElement("tr");
+const td = document.createElement("td");
+td.appendChild(document.createTextNode(`${d_data}`));
+tr.appendChild(td);
+
+table.forEach((t_data)=>{
+
+//チェックボックス処理
+const label = document.createElement('label');
+const input = document.createElement('input');
+input.type = 'checkbox';
+input.name = 'hobby';
+input.value = 'reading';
+input.checked = false; // HTMLの checked 属性に相当
+
+label.appendChild(input);
+const check_box = document.body.appendChild(label); // 追加したい親要素に差し替えてください
+
+//セル情報追加
+const td = document.createElement("td");
+td.appendChild(check_box);
+tr.appendChild(td);
+})
+
+tb.appendChild(tr);
+})
+
+//空列
+tr = document.createElement("tr");
+for(let i=0; i<5 ;i++){
+tr.appendChild(document.createElement("th"));
+}
+tb.appendChild(tr);
+
+//料理
+dish.forEach((di_data)=>{
+const tr = document.createElement("tr");
+const td = document.createElement("td");
+td.classList.add("left");
+td.appendChild(document.createTextNode(`${di_data}`));
+tr.appendChild(td);
+
+table.forEach((t_data)=>{
+
+//チェックボックス処理
+const label = document.createElement('label');
+const input = document.createElement('input');
+input.type = 'checkbox';
+input.value = 'reading';
+input.checked = false; // HTMLの checked 属性に相当
+
+label.appendChild(input);
+let check_box = document.body.appendChild(label); // 追加したい親要素に差し替えてください
+
+//セル情報追加
+const td = document.createElement("td");
+td.appendChild(check_box);
+tr.appendChild(td);
+})
+
+tb.appendChild(tr);
+})
+
+</script>
+</body>
+</html>
